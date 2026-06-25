@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+/* The Conscious Brotherhood theme — dark, warm, earthy.
+   Tailwind v4: tokens here generate utilities (bg-charcoal, text-bone, etc.). */
+@theme {
+  --color-charcoal: #15130f;
+  --color-bone: #e8e1d4;
+  --color-ember: #c8651b;
+  --color-olive: #3a4434;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-charcoal);
+  color: var(--color-bone);
+}
