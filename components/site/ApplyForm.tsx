@@ -49,7 +49,7 @@ export function ApplyForm() {
   }
 
   const field = "mt-1 w-full rounded-md border border-bone/20 bg-charcoal px-3 py-2 text-bone";
-  const err = (k: string) => errors[k] && <p className="mt-1 text-sm text-ember">{errors[k]}</p>;
+  const err = (k: string) => errors[k] ? <p id={`${k}-error`} className="mt-1 text-sm text-ember">{errors[k]}</p> : null;
 
   return (
     <form onSubmit={onSubmit} className="space-y-6">
@@ -58,22 +58,22 @@ export function ApplyForm() {
 
       <div>
         <label htmlFor="name" className="block text-sm">Your name</label>
-        <input id="name" name="name" className={field} />
+        <input id="name" name="name" className={field} aria-describedby="name-error" required />
         {err("name")}
       </div>
       <div>
         <label htmlFor="email" className="block text-sm">Email</label>
-        <input id="email" name="email" type="email" className={field} />
+        <input id="email" name="email" type="email" className={field} aria-describedby="email-error" required />
         {err("email")}
       </div>
       <div>
         <label htmlFor="drawingIn" className="block text-sm">What&apos;s drawing you in?</label>
-        <textarea id="drawingIn" name="drawingIn" rows={4} className={field} />
+        <textarea id="drawingIn" name="drawingIn" rows={4} className={field} aria-describedby="drawingIn-error" required />
         {err("drawingIn")}
       </div>
       <div>
         <label htmlFor="availability" className="block text-sm">Availability</label>
-        <input id="availability" name="availability" className={field} />
+        <input id="availability" name="availability" className={field} aria-describedby="availability-error" required />
         {err("availability")}
       </div>
       <div>
@@ -81,7 +81,7 @@ export function ApplyForm() {
         <textarea id="priorExperience" name="priorExperience" rows={3} className={field} />
       </div>
       <div className="flex items-start gap-3">
-        <input id="agreement" name="agreement" type="checkbox" className="mt-1" />
+        <input id="agreement" name="agreement" type="checkbox" className="mt-1" aria-describedby="agreement-error" required />
         <label htmlFor="agreement" className="text-sm text-bone/80">
           I understand circles are $99/month, month to month, cancel anytime, and by application.
         </label>
@@ -89,7 +89,7 @@ export function ApplyForm() {
       {err("agreement")}
 
       {failed && (
-        <div className="rounded-md border border-ember/40 bg-ember/10 p-4 text-sm">
+        <div role="alert" className="rounded-md border border-ember/40 bg-ember/10 p-4 text-sm">
           Something went wrong sending your application. Please{" "}
           <a className="underline" href={`mailto:${siteConfig.contactEmail}?subject=Circle application`}>
             email {siteConfig.contactEmail}
