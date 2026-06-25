@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Section } from "./Section";
 import { copy } from "@/lib/copy";
 
@@ -12,12 +13,12 @@ export function Circles() {
         ))}
       </ul>
       <p className="mt-6 text-bone/70">{copy.circles.note}</p>
-      <a
+      <Link
         href="/apply"
         className="mt-8 inline-flex items-center justify-center rounded-md bg-ember px-6 py-3 font-semibold text-charcoal transition hover:bg-ember/90"
       >
         Apply for a circle
-      </a>
+      </Link>
     </Section>
   );
 }
