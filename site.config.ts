@@ -25,6 +25,7 @@ export const siteConfig: SiteConfig = {
   analytics: { vercel: true, plausibleDomain: null },
 };
 
-export const hasLumaUrl = (c: SiteConfig = siteConfig): boolean => Boolean(c.lumaUrl);
+export const hasLumaUrl = (c: SiteConfig = siteConfig): c is SiteConfig & { lumaUrl: string } =>
+  Boolean(c.lumaUrl);
 export const hasCallDate = (c: SiteConfig = siteConfig): boolean => Boolean(c.nextCall.date);
 export const hostHasBio = (h: Host): boolean => Boolean(h.bio);

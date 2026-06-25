@@ -11,6 +11,13 @@ describe("SaveSeatButton", () => {
     expect(link).toHaveTextContent("July 17");
   });
 
+  it("renders 'Save your seat' without a date when lumaUrl is set but no date", () => {
+    render(<SaveSeatButton config={{ ...siteConfig, lumaUrl: "https://lu.ma/x", nextCall: { date: null, time: "TBD", tz: "TBD" } }} />);
+    const link = screen.getByRole("link", { name: /^save your seat$/i });
+    expect(link).toHaveAttribute("href", "https://lu.ma/x");
+    expect(link).not.toHaveTextContent(/next call/i);
+  });
+
   it("degrades to a disabled 'Dates announced soon' control with no link when lumaUrl is null", () => {
     render(<SaveSeatButton config={{ ...siteConfig, lumaUrl: null }} />);
     expect(screen.queryByRole("link")).toBeNull();

@@ -15,7 +15,6 @@ export function SaveSeatButton({
       <button
         type="button"
         disabled
-        aria-disabled="true"
         className={`${base} cursor-not-allowed bg-olive/40 text-bone/60 ${className}`}
       >
         Dates announced soon
@@ -27,7 +26,7 @@ export function SaveSeatButton({
     : "Save your seat";
   return (
     <a
-      href={config.lumaUrl as string}
+      href={config.lumaUrl}
       target="_blank"
       rel="noopener noreferrer"
       className={`${base} bg-ember text-charcoal hover:bg-ember/90 ${className}`}
