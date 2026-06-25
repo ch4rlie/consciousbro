@@ -18,7 +18,7 @@ type Result =
 
 export function validateApply(data: Record<string, unknown>): Result {
   // Honeypot: a hidden "website" field humans never see. Filled => bot.
-  if (typeof data.website === "string" && data.website.trim() !== "") {
+  if (data.website != null && String(data.website).trim() !== "") {
     return { ok: false, errors: {}, botDetected: true };
   }
   const parsed = applySchema.safeParse(data);
