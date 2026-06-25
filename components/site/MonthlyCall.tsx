@@ -4,8 +4,12 @@ import { copy } from "@/lib/copy";
 import { siteConfig, hasCallDate, hasLumaUrl, type SiteConfig } from "@/site.config";
 
 export function MonthlyCall({ config = siteConfig }: { config?: SiteConfig }) {
+  const { date, time, tz } = hasCallDate(config) ? config.nextCall : { date: "", time: "", tz: "" };
+  const timeParts = [time, tz].filter((p) => p && p !== "TBD").join(" ");
   const whenLine = hasCallDate(config)
-    ? `${config.nextCall.time} ${config.nextCall.tz} — next one is ${config.nextCall.date}`
+    ? timeParts
+      ? `${timeParts} — next one is ${date}`
+      : `Next one is ${date}`
     : "Next date announced soon";
   return (
     <Section id="call">
