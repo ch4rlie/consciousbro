@@ -17,5 +17,6 @@ describe("Host", () => {
     const cfg = { ...siteConfig, hosts: [{ name: "Ccowl Humphries", bio: "Sat in circles since 2018.", photo: null }, { name: "Charlie Grove", bio: "Doing this with my brother.", photo: null }] };
     render(<Host config={cfg} />);
     expect(screen.getByText(/sat in circles since 2018/i)).toBeInTheDocument();
+    expect(screen.getByText(/doing this with my brother/i)).toBeInTheDocument();
   });
 });

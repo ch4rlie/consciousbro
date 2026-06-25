@@ -11,6 +11,7 @@ describe("siteConfig", () => {
   });
   it("treats null date as no call date", () => {
     expect(hasCallDate({ ...siteConfig, nextCall: { ...siteConfig.nextCall, date: null } })).toBe(false);
+    expect(hasCallDate({ ...siteConfig, nextCall: { ...siteConfig.nextCall, date: "July 17" } })).toBe(true);
   });
   it("treats null bio as no bio", () => {
     expect(hostHasBio({ name: "x", bio: null, photo: null })).toBe(false);

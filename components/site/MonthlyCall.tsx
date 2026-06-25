@@ -21,9 +21,10 @@ export function MonthlyCall({ config = siteConfig }: { config?: SiteConfig }) {
         <div className="mt-8 overflow-hidden rounded-lg border border-bone/10">
           <iframe
             title="RSVP on Luma"
-            src={config.lumaUrl as string}
+            src={config.lumaUrl}
             className="h-[450px] w-full"
             allow="fullscreen"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
           />
         </div>
       )}

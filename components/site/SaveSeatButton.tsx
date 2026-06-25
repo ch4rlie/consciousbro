@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { siteConfig, hasLumaUrl, hasCallDate, type SiteConfig } from "@/site.config";
 
 const base =
@@ -15,7 +16,7 @@ export function SaveSeatButton({
       <button
         type="button"
         disabled
-        className={`${base} cursor-not-allowed bg-olive/40 text-bone/60 ${className}`}
+        className={cn(base, "cursor-not-allowed bg-olive/40 text-bone/60", className)}
       >
         Dates announced soon
       </button>
@@ -29,7 +30,7 @@ export function SaveSeatButton({
       href={config.lumaUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`${base} bg-ember text-charcoal hover:bg-ember/90 ${className}`}
+      className={cn(base, "bg-ember text-charcoal hover:bg-ember/90", className)}
     >
       {label}
     </a>

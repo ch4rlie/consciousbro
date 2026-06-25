@@ -28,4 +28,4 @@ export const siteConfig: SiteConfig = {
 export const hasLumaUrl = (c: SiteConfig = siteConfig): c is SiteConfig & { lumaUrl: string } =>
   Boolean(c.lumaUrl);
 export const hasCallDate = (c: SiteConfig = siteConfig): boolean => Boolean(c.nextCall.date);
-export const hostHasBio = (h: Host): boolean => Boolean(h.bio);
+export const hostHasBio = (h: Host): h is Host & { bio: string } => Boolean(h.bio);
