@@ -44,4 +44,13 @@ describe("validateApply", () => {
     expect(r.ok).toBe(false);
     if (!r.ok) expect(r.errors.agreement).toBeDefined();
   });
+  it("rejects a null body without throwing", () => {
+    // @ts-expect-error testing a non-object runtime input
+    const r = validateApply(null);
+    expect(r.ok).toBe(false);
+    if (!r.ok) {
+      expect(r.botDetected).toBe(false);
+      expect(r.errors.form).toBeDefined();
+    }
+  });
 });

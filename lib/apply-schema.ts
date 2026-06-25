@@ -17,6 +17,9 @@ type Result =
   | { ok: false; errors: Record<string, string>; botDetected: boolean };
 
 export function validateApply(data: Record<string, unknown>): Result {
+  if (typeof data !== "object" || data === null || Array.isArray(data)) {
+    return { ok: false, errors: { form: "Invalid submission." }, botDetected: false };
+  }
   // Honeypot: a hidden "website" field humans never see. Filled => bot.
   if (data.website != null && String(data.website).trim() !== "") {
     return { ok: false, errors: {}, botDetected: true };
