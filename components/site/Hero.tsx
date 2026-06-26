@@ -38,7 +38,10 @@ export function Hero() {
 
       {/* Existing hero content, on top */}
       <div className="mx-auto max-w-3xl px-6 text-center">
-        <p className="mb-4 text-sm uppercase tracking-widest text-ember">{copy.hero.eyebrow}</p>
+        <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-ember/50 bg-charcoal/60 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-bone shadow-sm backdrop-blur-sm sm:text-sm">
+          <span className="size-1.5 shrink-0 rounded-full bg-ember" aria-hidden="true" />
+          {copy.hero.eyebrow}
+        </p>
         <h1 className="font-serif text-4xl leading-tight text-bone sm:text-6xl">{copy.hero.headline}</h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-bone/80">{copy.hero.subhead}</p>
         <div className="mt-10 flex flex-col items-center gap-4">
