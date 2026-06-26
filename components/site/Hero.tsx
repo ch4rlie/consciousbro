@@ -4,7 +4,7 @@ import { copy } from "@/lib/copy";
 
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-[90vh] items-center overflow-hidden">
+    <section className="relative isolate flex min-h-[88svh] items-center overflow-hidden py-20">
       {/* Poster = LCP, and the only thing mobile + reduced-motion users ever see */}
       <img
         src="/embers-poster.jpg"
