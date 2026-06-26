@@ -23,7 +23,7 @@ export function Hero() {
         playsInline
         preload="none"
         aria-hidden="true"
-        className="absolute inset-0 -z-10 hidden h-full w-full object-cover motion-safe:md:block"
+        className="absolute inset-0 -z-10 hidden h-full w-full object-cover motion-safe:block"
       >
         {/* webm first (smaller, Chrome/Firefox); mp4 fallback for Safari */}
         <source src="/embers.webm" type="video/webm" />
