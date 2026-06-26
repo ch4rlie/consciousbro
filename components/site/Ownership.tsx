@@ -1,10 +1,12 @@
+import { Compass } from "lucide-react";
 import { Section } from "./Section";
+import { SectionHeading } from "./SectionHeading";
 import { copy } from "@/lib/copy";
 
 export function Ownership() {
   return (
     <Section className="bg-olive/10">
-      <h2 className="font-serif text-3xl sm:text-4xl">{copy.ownership.header}</h2>
+      <SectionHeading icon={Compass}>{copy.ownership.header}</SectionHeading>
       {copy.ownership.body.map((p, i) => (
         <p key={i} className="mt-6 text-lg text-bone/80">{p}</p>
       ))}
