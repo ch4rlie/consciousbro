@@ -2,13 +2,14 @@ import Link from "next/link";
 import { UsersRound } from "lucide-react";
 import { Section } from "./Section";
 import { SectionHeading } from "./SectionHeading";
+import { CircleField } from "./CircleField";
 import { copy } from "@/lib/copy";
 
 const PRICE = "$99/month";
 
 export function Circles() {
   return (
-    <Section id="circles" className="bg-olive/10">
+    <Section id="circles" className="bg-olive/10" background={<CircleField />}>
       <SectionHeading icon={UsersRound}>{copy.circles.header}</SectionHeading>
       <p className="mt-6 text-lg text-bone/80">{copy.circles.body}</p>
       <ul className="mt-6 space-y-2 text-bone/90">
