@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { siteConfig } from "@/site.config";
 import "./globals.css";
 
