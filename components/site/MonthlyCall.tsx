@@ -10,7 +10,7 @@ export function MonthlyCall({ config = siteConfig }: { config?: SiteConfig }) {
   const timeParts = [time, tz].filter((p) => p && p !== "TBD").join(" ");
   const whenLine = hasCallDate(config)
     ? timeParts
-      ? `${timeParts} — next one is ${date}`
+      ? `${timeParts}, next one is ${date}`
       : `Next one is ${date}`
     : "Next date announced soon";
   return (

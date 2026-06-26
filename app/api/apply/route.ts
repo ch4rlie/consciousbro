@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     if (isProd) {
       return NextResponse.json({ ok: false, error: "send_failed" }, { status: 502 });
     }
-    console.warn("[apply] DEV soft-success — email not configured. Payload:", result.value);
+    console.warn("[apply] DEV soft-success (email not configured). Payload:", result.value);
     return NextResponse.json({ ok: true }, { status: 200 });
   }
 

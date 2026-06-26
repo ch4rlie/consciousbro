@@ -15,7 +15,7 @@ export async function sendApplicationEmail(input: ApplyInput): Promise<void> {
     from,
     to: siteConfig.contactEmail,
     replyTo: input.email,
-    subject: `Circle application — ${input.name}`,
+    subject: `New circle application from ${input.name}`,
     text: [
       `Name: ${input.name}`,
       `Email: ${input.email}`,

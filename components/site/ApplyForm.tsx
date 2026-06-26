@@ -94,7 +94,7 @@ export function ApplyForm() {
           <a className="underline" href={`mailto:${siteConfig.contactEmail}?subject=Circle application`}>
             email {siteConfig.contactEmail}
           </a>{" "}
-          directly — we don&apos;t want your message to disappear.
+          directly, so your message doesn&apos;t disappear.
         </div>
       )}
 

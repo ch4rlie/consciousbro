@@ -23,7 +23,7 @@ export function SaveSeatButton({
     );
   }
   const label = hasCallDate(config)
-    ? `Save your seat — next call ${config.nextCall.date}`
+    ? `Save your seat for ${config.nextCall.date}`
     : "Save your seat";
   return (
     <a
