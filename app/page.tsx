@@ -3,6 +3,7 @@ import { Hero } from "@/components/site/Hero";
 import { Problem } from "@/components/site/Problem";
 import { Ownership } from "@/components/site/Ownership";
 import { BeingSeen } from "@/components/site/BeingSeen";
+import { SurvivalStrategy } from "@/components/site/SurvivalStrategy";
 import { MonthlyCall } from "@/components/site/MonthlyCall";
 import { Circles } from "@/components/site/Circles";
 import { WhoFor } from "@/components/site/WhoFor";
@@ -21,6 +22,7 @@ export default function Page() {
         <Problem />
         <Ownership />
         <BeingSeen />
+        <SurvivalStrategy />
         <MonthlyCall />
         <Circles />
         <WhoFor />
