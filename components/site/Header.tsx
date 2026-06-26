@@ -12,7 +12,9 @@ export function Header() {
           className="flex items-center gap-2.5 text-bone transition hover:text-ember"
         >
           <Logo className="size-8 shrink-0" />
-          <span className="font-serif text-lg tracking-tight">{siteConfig.name}</span>
+          <span className="font-serif text-lg tracking-tight">
+            {siteConfig.name.replace(/^The\s+/i, "")}
+          </span>
         </Link>
         <SaveSeatButton className="px-4 py-2 text-sm" />
       </div>

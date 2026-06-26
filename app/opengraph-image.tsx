@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/site.config";
+import { LOGO_PATH, LOGO_VIEWBOX } from "@/lib/logo-path";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -23,12 +24,15 @@ export default function OgImage() {
           textAlign: "center",
         }}
       >
+        <svg width="132" height="132" viewBox={LOGO_VIEWBOX} fill="#E8E1D4" style={{ marginBottom: 40 }}>
+          <path d={LOGO_PATH} />
+        </svg>
         <div style={{ fontSize: 64, lineHeight: 1.1 }}>{siteConfig.name}</div>
         <div style={{ fontSize: 30, color: "#C8651B", marginTop: 24 }}>
           You were never meant to carry it alone.
         </div>
       </div>
     ),
-    { ...size }
+    { ...size },
   );
 }
