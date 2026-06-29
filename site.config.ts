@@ -16,7 +16,7 @@ export const siteConfig: SiteConfig = {
   domain: "consciousbrotherhood.com", // TODO-CONTENT: confirm final domain
   contactEmail: "hello@consciousbrotherhood.com", // TODO-CONTENT: real inbox for /apply fallback + delivery
   social: { instagram: null, youtube: null }, // TODO-CONTENT: handles
-  nextCall: { date: null, time: "TBD", tz: "TBD" }, // TODO-CONTENT: next call
+  nextCall: { date: "July 23", time: "6pm PT", tz: "/ 9pm ET" }, // first brother call
   lumaUrl: null, // TODO-CONTENT: Luma event URL
   hosts: [
     { name: "Ccowl Humphries", bio: null, photo: null }, // TODO-CONTENT: Ccowl bio + photo
