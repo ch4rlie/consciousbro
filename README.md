@@ -22,7 +22,7 @@ Every fill-in-later value is centralized in **`site.config.ts`** (the single sou
 
 | Field | What to set |
 |---|---|
-| `domain` | final domain (currently `consciousbrotherhood.com`) |
+| `domain` | final domain (currently `consciousbrotherhood.org`) |
 | `contactEmail` | the inbox that receives circle applications **and** the mailto fallback if sending fails |
 | `social.instagram` / `social.youtube` | handles (or leave `null`) |
 | `nextCall.date` / `time` / `tz` | next call details — until `date` is set, the call section shows "Next date announced soon" |

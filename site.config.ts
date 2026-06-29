@@ -13,8 +13,8 @@ export type SiteConfig = {
 
 export const siteConfig: SiteConfig = {
   name: "The Conscious Brotherhood",
-  domain: "consciousbrotherhood.com", // TODO-CONTENT: confirm final domain
-  contactEmail: "hello@consciousbrotherhood.com", // TODO-CONTENT: real inbox for /apply fallback + delivery
+  domain: "consciousbrotherhood.org",
+  contactEmail: "hello@consciousbrotherhood.org",
   social: { instagram: null, youtube: null }, // TODO-CONTENT: handles
   nextCall: { date: "July 23", time: "6pm PT", tz: "/ 9pm ET" }, // first brother call
   lumaUrl: null, // TODO-CONTENT: Luma event URL
