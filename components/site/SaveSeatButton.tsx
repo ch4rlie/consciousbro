@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { siteConfig, hasLumaUrl, hasCallDate, type SiteConfig } from "@/site.config";
+import { siteConfig, hasLumaUrl, hasCallDate, lumaEventId, type SiteConfig } from "@/site.config";
 
 const base =
   "inline-flex items-center justify-center rounded-md px-6 py-3 text-base font-semibold transition";
@@ -25,11 +25,16 @@ export function SaveSeatButton({
   const label = hasCallDate(config)
     ? `Save your seat for ${config.nextCall.date}`
     : "Save your seat";
+  const eventId = lumaEventId(config);
   return (
     <a
       href={config.lumaUrl}
       target="_blank"
       rel="noopener noreferrer"
+      // When the lazily-loaded Luma script runs, it binds these to open the
+      // checkout modal in-page (preventDefault). Until then — or if it never
+      // loads — this stays a plain link to the event page. Progressive enhancement.
+      {...(eventId && { "data-luma-action": "checkout", "data-luma-event-id": eventId })}
       className={cn(base, "bg-ember text-charcoal hover:bg-ember/90", className)}
     >
       {label}

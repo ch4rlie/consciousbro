@@ -4,11 +4,14 @@ import { SaveSeatButton } from "@/components/site/SaveSeatButton";
 import { siteConfig } from "@/site.config";
 
 describe("SaveSeatButton", () => {
-  it("renders a live link when lumaUrl is set", () => {
-    render(<SaveSeatButton config={{ ...siteConfig, lumaUrl: "https://lu.ma/x", nextCall: { date: "July 17", time: "7pm", tz: "ET" } }} />);
+  it("renders a Luma checkout link when lumaUrl is set", () => {
+    render(<SaveSeatButton config={{ ...siteConfig, lumaUrl: "https://luma.com/event/evt-ABC123", nextCall: { date: "July 17", time: "7pm", tz: "ET" } }} />);
     const link = screen.getByRole("link", { name: /save your seat/i });
-    expect(link).toHaveAttribute("href", "https://lu.ma/x");
+    expect(link).toHaveAttribute("href", "https://luma.com/event/evt-ABC123");
     expect(link).toHaveTextContent("July 17");
+    // wires the lazily-loaded checkout-button.js modal; href is the no-JS fallback
+    expect(link).toHaveAttribute("data-luma-action", "checkout");
+    expect(link).toHaveAttribute("data-luma-event-id", "evt-ABC123");
   });
 
   it("renders 'Save your seat' without a date when lumaUrl is set but no date", () => {

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Fraunces, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { siteConfig } from "@/site.config";
+import { siteConfig, hasLumaUrl } from "@/site.config";
 import "./globals.css";
 
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", display: "swap" });
@@ -30,6 +31,11 @@ export default function RootLayout({
       <body className="min-h-full bg-charcoal font-sans text-bone">
         {children}
         {siteConfig.analytics.vercel && <Analytics />}
+        {hasLumaUrl(siteConfig) && (
+          // Loads during browser idle time, after first-party content — keeps the
+          // RSVP modal off the critical path. Buttons stay usable links until it binds.
+          <Script src="https://embed.lu.ma/checkout-button.js" strategy="lazyOnload" />
+        )}
       </body>
     </html>
   );

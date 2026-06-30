@@ -3,7 +3,7 @@ import { Section } from "./Section";
 import { SectionHeading } from "./SectionHeading";
 import { SaveSeatButton } from "./SaveSeatButton";
 import { copy } from "@/lib/copy";
-import { siteConfig, hasCallDate, hasLumaUrl, type SiteConfig } from "@/site.config";
+import { siteConfig, hasCallDate, type SiteConfig } from "@/site.config";
 
 export function MonthlyCall({ config = siteConfig }: { config?: SiteConfig }) {
   const { date, time, tz } = hasCallDate(config) ? config.nextCall : { date: "", time: "", tz: "" };
@@ -23,17 +23,6 @@ export function MonthlyCall({ config = siteConfig }: { config?: SiteConfig }) {
         <li><strong>Cost:</strong> <span className="font-semibold text-ember">{copy.monthlyCall.cost}</span></li>
         <li><strong>Who:</strong> {copy.monthlyCall.who}</li>
       </ul>
-      {hasLumaUrl(config) && (
-        <div className="mt-8 overflow-hidden rounded-lg border border-bone/10">
-          <iframe
-            title="RSVP on Luma"
-            src={config.lumaUrl}
-            className="h-[450px] w-full"
-            allow="fullscreen"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
-          />
-        </div>
-      )}
       <div className="mt-8">
         <SaveSeatButton config={config} />
       </div>

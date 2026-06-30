@@ -10,6 +10,7 @@ describe("MonthlyCall", () => {
   });
   it("renders the date when set", () => {
     render(<MonthlyCall config={{ ...siteConfig, nextCall: { date: "July 17", time: "7pm", tz: "ET" } }} />);
-    expect(screen.getByText(/July 17/)).toBeInTheDocument();
+    // scope to the "When" line — the Save-seat button also carries the date now
+    expect(screen.getByText(/next one is July 17/)).toBeInTheDocument();
   });
 });
