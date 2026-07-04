@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 export function Faq() {
   return (
-    <Section className="bg-olive/10">
+    <Section id="faq" className="bg-olive/10">
       <SectionHeading icon={HelpCircle}>Questions</SectionHeading>
       <Accordion type="single" collapsible className="mt-8">
         {copy.faq.map((f, i) => (

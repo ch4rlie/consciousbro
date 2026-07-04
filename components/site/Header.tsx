@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { SaveSeatButton } from "./SaveSeatButton";
+import { HeaderNav } from "./HeaderNav";
 import { Logo } from "./Logo";
 import { siteConfig } from "@/site.config";
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-bone/10 bg-charcoal/90 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <div className="relative mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <Link
           href="/"
           className="flex items-center gap-2.5 text-bone transition hover:text-ember"
@@ -16,7 +16,7 @@ export function Header() {
             {siteConfig.name.replace(/^The\s+/i, "")}
           </span>
         </Link>
-        <SaveSeatButton className="px-4 py-2 text-sm" />
+        <HeaderNav />
       </div>
     </header>
   );

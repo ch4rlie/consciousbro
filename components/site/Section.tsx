@@ -16,7 +16,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("relative px-6 py-20 sm:py-28", grain && "section-grain", className)}
+      className={cn("relative scroll-mt-20 px-6 py-20 sm:py-28", grain && "section-grain", className)}
     >
       {background}
       <div className="relative z-10 mx-auto w-full max-w-3xl">{children}</div>
