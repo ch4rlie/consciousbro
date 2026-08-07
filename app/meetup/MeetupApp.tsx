@@ -174,8 +174,8 @@ export default function MeetupApp() {
       <div className="wrap">
         <h1>Men&apos;s Meetup</h1>
         <p className="sub">
-          Mark <strong>every</strong> weekend — the ones that work <em>and</em> the ones that
-          don&apos;t. We need one weekend all 7 can make.
+          Mark <strong>every</strong> weekend — the ones that work <em>and</em>{" "}
+          the ones that don&apos;t. We need one weekend all 7 can make.
         </p>
 
         {error && <div className="err">{error}</div>}
@@ -257,8 +257,8 @@ function VoteSection({
 
       <div className="callout">
         Give <strong>all {state.weekends.length}</strong> a Yes, If&nbsp;needed, or{" "}
-        <strong>No</strong>. Marking a <strong>No</strong> matters most — a blank just leaves the
-        group guessing and wastes everyone&apos;s time.
+        <strong>No</strong>. Marking a <strong>No</strong>{" "}matters most — a blank just leaves
+        the group guessing and wastes everyone&apos;s time.
       </div>
 
       {state.weekends.map((w) => {
