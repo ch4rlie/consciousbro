@@ -49,60 +49,56 @@
   margin: 0 0 18px;
 }
 
-/* Tabs */
-.meetup-scope .tabs {
-  display: flex;
-  gap: 6px;
+/* Ballot / identity */
+.meetup-scope .pickcard {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 5px;
+  padding: 16px;
   margin-bottom: 18px;
 }
-.meetup-scope .tab {
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  padding: 13px 12px;
-  border: 0;
-  border-radius: 10px;
-  background: transparent;
-  color: var(--muted);
-  font-size: 15px;
+.meetup-scope .picklabel {
   font-weight: 700;
-  cursor: pointer;
-  transition: background 0.14s ease, color 0.14s ease, box-shadow 0.14s ease;
+  font-size: 15px;
+  margin-bottom: 12px;
 }
-.meetup-scope .tab:hover {
+.meetup-scope .pickhint {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 12px;
+  text-align: center;
+}
+.meetup-scope .ballot {
+  margin-bottom: 4px;
+}
+
+/* Section divider heading */
+.meetup-scope .sectionhead {
+  margin: 26px 0 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.meetup-scope .sectionhead h2 {
+  font-size: 17px;
+  margin: 0 0 2px;
   color: var(--text);
 }
-.meetup-scope .tab .tab-ico {
-  font-size: 16px;
-  filter: grayscale(0.5);
-  opacity: 0.75;
+.meetup-scope .sectionsub {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
 }
-.meetup-scope .tab.active {
-  background: var(--accent);
-  color: #fff;
-  box-shadow: 0 3px 12px rgba(91, 140, 255, 0.4);
-}
-.meetup-scope .tab.active .tab-ico {
-  filter: none;
-  opacity: 1;
-}
-.meetup-scope .tab .tab-count {
-  background: rgba(255, 255, 255, 0.22);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 800;
-  padding: 2px 7px;
-  border-radius: 999px;
-}
-.meetup-scope .tab:not(.active) .tab-count {
-  background: var(--yes);
-  color: #0f1115;
+
+/* Winner banner */
+.meetup-scope .winner-banner {
+  background: var(--yes-bg);
+  border: 1px solid var(--yes);
+  color: var(--yes);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 14px;
 }
 
 /* Name picker */

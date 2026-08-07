@@ -74,7 +74,6 @@ function computeResult(weekend: Weekend, people: string[], state: PollState): We
 export default function MeetupApp() {
   const [state, setState] = useState<PollState | null>(null);
   const [me, setMe] = useState<string | null>(null);
-  const [tab, setTab] = useState<"vote" | "results">("vote");
   const [error, setError] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
 
@@ -116,6 +115,8 @@ export default function MeetupApp() {
   const pickName = (name: string) => {
     setMe(name);
     window.localStorage.setItem("meetup-me", name);
+    // jump the voter to their ballot
+    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const changeName = () => {
     setMe(null);
@@ -173,46 +174,45 @@ export default function MeetupApp() {
       <div className="wrap">
         <h1>Men&apos;s Meetup</h1>
         <p className="sub">
-          {tab === "vote"
-            ? "Tap your name, then mark each weekend. We need all 7 guys on one weekend."
-            : "Green means it works for everyone. Sorted best weekend first."}
+          Mark the weekends that work for you. We need all 7 guys on one weekend.
         </p>
 
         {error && <div className="err">{error}</div>}
 
-        <div className="tabs" role="tablist">
-          <button
-            role="tab"
-            aria-selected={tab === "vote"}
-            className={`tab ${tab === "vote" ? "active" : ""}`}
-            onClick={() => setTab("vote")}
-          >
-            <span className="tab-ico">🗳️</span> Cast your vote
-          </button>
-          <button
-            role="tab"
-            aria-selected={tab === "results"}
-            className={`tab ${tab === "results" ? "active" : ""}`}
-            onClick={() => setTab("results")}
-          >
-            <span className="tab-ico">📊</span> See results
-            {winners.length ? <span className="tab-count">{winners.length} ✓</span> : null}
-          </button>
-        </div>
-
-        {tab === "vote" ? (
-          <VoteTab me={me} state={state} onPick={pickName} onChange={changeName} onVote={vote} />
-        ) : (
-          <ResultsTab results={results} />
+        {/* ---- Your ballot ---- */}
+        {state && (
+          <VoteSection
+            me={me}
+            state={state}
+            onPick={pickName}
+            onChange={changeName}
+            onVote={vote}
+          />
         )}
 
-        <p className="note">Tap a choice again to clear it. Answers save instantly for everyone.</p>
+        {/* ---- Everyone's answers, always visible ---- */}
+        <div className="sectionhead">
+          <h2>Where everyone stands</h2>
+          <p className="sectionsub">Green means it works for all 7. Sorted best weekend first.</p>
+        </div>
+
+        {winners.length > 0 && (
+          <div className="winner-banner">
+            🎯 {joinNames(winners.map((w) => w.weekend.label))} works for all 7!
+          </div>
+        )}
+
+        <ResultsList results={results} />
+
+        <p className="note">
+          Tap a choice again to clear it. Everyone sees the same answers, updated live.
+        </p>
       </div>
     </div>
   );
 }
 
-function VoteTab({
+function VoteSection({
   me,
   state,
   onPick,
@@ -220,17 +220,15 @@ function VoteTab({
   onVote,
 }: {
   me: string | null;
-  state: PollState | null;
+  state: PollState;
   onPick: (n: string) => void;
   onChange: () => void;
   onVote: (weekendId: string, current: VoteValue | undefined, value: VoteValue) => void;
 }) {
-  if (!state) return null;
-
   if (!me) {
     return (
-      <div>
-        <p className="sub">Who are you?</p>
+      <div className="pickcard">
+        <div className="picklabel">First, tap your name to vote</div>
         <div className="pickgrid">
           {state.people.map((p) => (
             <button key={p} className="pickbtn" onClick={() => onPick(p)}>
@@ -238,6 +236,7 @@ function VoteTab({
             </button>
           ))}
         </div>
+        <div className="pickhint">…or just scroll down to see where everyone stands.</div>
       </div>
     );
   }
@@ -245,7 +244,7 @@ function VoteTab({
   const myRow = state.votes[me] ?? {};
 
   return (
-    <div>
+    <div className="ballot">
       <div className="whoami">
         <div>
           Voting as <span className="name">{me}</span>
@@ -278,7 +277,7 @@ function VoteTab({
   );
 }
 
-function ResultsTab({ results }: { results: WeekendResult[] }) {
+function ResultsList({ results }: { results: WeekendResult[] }) {
   return (
     <div>
       <div className="legend">
