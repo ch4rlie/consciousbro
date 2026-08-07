@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# local dev store for /meetup (Upstash is used in production)
+/.data/
+
 # production
 /build
 

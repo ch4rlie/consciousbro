@@ -1,0 +1,344 @@
+/* All rules are scoped under .meetup-scope so this self-contained scheduler
+   cannot leak into the surrounding site's Tailwind theme, and vice versa. */
+
+.meetup-scope {
+  --bg: #0f1115;
+  --panel: #171a21;
+  --panel-2: #1e222b;
+  --border: #2a2f3a;
+  --text: #e8eaed;
+  --muted: #9aa3b2;
+  --accent: #5b8cff;
+
+  --yes: #2ecc71;
+  --yes-bg: rgba(46, 204, 113, 0.14);
+  --if: #f5b74e;
+  --if-bg: rgba(245, 183, 78, 0.14);
+  --no: #ef5b5b;
+  --no-bg: rgba(239, 91, 91, 0.14);
+  --none: #59606e;
+  --none-bg: rgba(89, 96, 110, 0.14);
+
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+.meetup-scope * {
+  box-sizing: border-box;
+}
+
+.meetup-scope .wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 16px 64px;
+}
+
+.meetup-scope h1 {
+  font-size: 22px;
+  margin: 4px 0 2px;
+  color: var(--text);
+}
+
+.meetup-scope .sub {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 18px;
+}
+
+/* Tabs */
+.meetup-scope .tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 5px;
+  margin-bottom: 18px;
+}
+.meetup-scope .tab {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 13px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.14s ease, color 0.14s ease, box-shadow 0.14s ease;
+}
+.meetup-scope .tab:hover {
+  color: var(--text);
+}
+.meetup-scope .tab .tab-ico {
+  font-size: 16px;
+  filter: grayscale(0.5);
+  opacity: 0.75;
+}
+.meetup-scope .tab.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(91, 140, 255, 0.4);
+}
+.meetup-scope .tab.active .tab-ico {
+  filter: none;
+  opacity: 1;
+}
+.meetup-scope .tab .tab-count {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+.meetup-scope .tab:not(.active) .tab-count {
+  background: var(--yes);
+  color: #0f1115;
+}
+
+/* Name picker */
+.meetup-scope .pickgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.meetup-scope .pickbtn {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.meetup-scope .pickbtn:hover {
+  border-color: var(--accent);
+}
+
+.meetup-scope .whoami {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+.meetup-scope .whoami .name {
+  font-weight: 700;
+}
+.meetup-scope .linkbtn {
+  background: none;
+  border: 0;
+  color: var(--accent);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Vote rows */
+.meetup-scope .voterow {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+.meetup-scope .voterow .wk {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.meetup-scope .choices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.meetup-scope .choice {
+  padding: 10px 4px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel-2);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.05s ease;
+}
+.meetup-scope .choice:active {
+  transform: scale(0.97);
+}
+.meetup-scope .choice.sel-yes {
+  background: var(--yes-bg);
+  border-color: var(--yes);
+  color: var(--yes);
+}
+.meetup-scope .choice.sel-if {
+  background: var(--if-bg);
+  border-color: var(--if);
+  color: var(--if);
+}
+.meetup-scope .choice.sel-no {
+  background: var(--no-bg);
+  border-color: var(--no);
+  color: var(--no);
+}
+
+/* Results */
+.meetup-scope .legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+.meetup-scope .legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.meetup-scope .dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.meetup-scope .dot.yes {
+  background: var(--yes);
+}
+.meetup-scope .dot.if {
+  background: var(--if);
+}
+.meetup-scope .dot.no {
+  background: var(--no);
+}
+.meetup-scope .dot.none {
+  background: var(--none);
+}
+
+.meetup-scope .rescard {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+.meetup-scope .rescard.allin {
+  border-color: var(--yes);
+  box-shadow: 0 0 0 1px var(--yes) inset;
+}
+.meetup-scope .rescard.workable {
+  border-color: var(--if);
+}
+.meetup-scope .reshead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.meetup-scope .reshead .wk {
+  font-weight: 700;
+  font-size: 16px;
+}
+.meetup-scope .badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.meetup-scope .badge.allin {
+  background: var(--yes-bg);
+  color: var(--yes);
+}
+.meetup-scope .badge.workable {
+  background: var(--if-bg);
+  color: var(--if);
+}
+.meetup-scope .badge.pending {
+  background: var(--none-bg);
+  color: var(--muted);
+}
+.meetup-scope .badge.dead {
+  background: var(--no-bg);
+  color: var(--no);
+}
+.meetup-scope .status {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.meetup-scope .people {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.meetup-scope .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px 4px 6px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+}
+.meetup-scope .chip .ini {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #0f1115;
+}
+.meetup-scope .chip.yes .ini {
+  background: var(--yes);
+}
+.meetup-scope .chip.if .ini {
+  background: var(--if);
+}
+.meetup-scope .chip.no .ini {
+  background: var(--no);
+}
+.meetup-scope .chip.none .ini {
+  background: var(--none);
+  color: var(--text);
+}
+
+.meetup-scope .note {
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+  margin-top: 20px;
+}
+.meetup-scope .err {
+  background: var(--no-bg);
+  border: 1px solid var(--no);
+  color: var(--no);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+.meetup-scope .spinner {
+  text-align: center;
+  color: var(--muted);
+  padding: 40px 0;
+}
