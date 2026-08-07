@@ -71,6 +71,19 @@
 .meetup-scope .ballot {
   margin-bottom: 4px;
 }
+.meetup-scope .callout {
+  background: var(--if-bg);
+  border: 1px solid var(--if);
+  color: #f0d9ac;
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  margin-bottom: 14px;
+}
+.meetup-scope .callout strong {
+  color: var(--if);
+}
 
 /* Section divider heading */
 .meetup-scope .sectionhead {
